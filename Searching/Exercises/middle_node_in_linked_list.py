@@ -27,7 +27,7 @@ class LinkedList:
         while fast is not None and fast.next is not None:
             slow = slow.next
             fast = fast.next.next
-        return slow
+        return slow.value
             
         
 
@@ -46,8 +46,11 @@ my_linked_list.append(2)
 my_linked_list.append(3)
 my_linked_list.append(4)
 my_linked_list.append(5)
+my_linked_list.append(6)
+my_linked_list.append(7)
+my_linked_list.append(8)
 
-print(my_linked_list.find_middle_node().value)
+print(my_linked_list.find_middle_node())
 
 
 
