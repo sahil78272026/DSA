@@ -99,7 +99,7 @@ class LinkedList:
         temp = self.head 
         pre =  self.head
 
-        while (temp.next): # start traversing from beginning and checking if next attribute of node is pointing to last element or note
+        while (temp.next): # start traversing from beginning and checking if next attribute of node is pointing to last element or not
             pre = temp
             temp = temp.next
 
