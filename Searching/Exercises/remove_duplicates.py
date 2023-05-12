@@ -71,9 +71,32 @@ class LinkedList:
     #                                     #
     #                                     #
     #######################################
+    # solution using set, O(n)
+    """def remove_duplicates(self):
+            values = set()
+            previous = None
+            current = self.head
+            while current:
+                if current.value in values:
+                    previous.next = current.next
+                    self.length -= 1
+                else:
+                    values.add(current.value)
+                    previous = current
+                current = current.next"""
+
+    # solution without set, O(n^2)
     def remove_duplicates(self):
-        
-        pass
+        current = self.head
+        while current:
+            runner = current
+            while runner.next:
+                if runner.next.value == current.value:
+                    runner.next = runner.next.next
+                    self.length -= 1
+                else:
+                    runner = runner.next
+            current = current.next
 
 
 
