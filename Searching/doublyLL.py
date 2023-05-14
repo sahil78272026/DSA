@@ -1,5 +1,6 @@
 class Node:
     def __init__(self,value):
+        print("New Node Created")
         self.value = value
         self.next = None
         self.pre = None
@@ -8,6 +9,7 @@ class Node:
 class DoublyLinkedList:
 
     def __init__(self,value):
+        print("Initializing DLL")
         new_node = Node(value)
         self.head = new_node
         self.tail = new_node
@@ -24,6 +26,7 @@ class DoublyLinkedList:
             new_node.pre = self.tail
             self.tail = new_node
         self.length+=1
+        print("Node Appended at the End")
         return True
 
     # popping out last node from the doubly linked list
@@ -42,10 +45,33 @@ class DoublyLinkedList:
             self.tail.next = None
             temp.pre = None
 
-        self.length-=1
+        self.length -=1
+        print("Node Removed from the End")
+        return temp
+    
+    # popping out first node from the doubly linked list
+    def pop_first(self):
+        if self.length ==0:
+            return None
+        
+        temp = self.head
+        if self.length==1:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+            self.head.pre = None
+            temp.next = None
+
+        self.length -=1  
+        print("Node Removed from the start")      
         return temp
 
+
+
+    # adding node at beginning of DLL
     def prepend(self,value):
+        
         new_node = Node(value)
         if self.length ==0:
             self.head = new_node
@@ -55,9 +81,27 @@ class DoublyLinkedList:
             self.head.pre = new_node
             self.head = new_node
         self.length+=1
+        print("Node added at the start")
         return True
         
+    # getting value of node at particular index    
+    def get(self,index):
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        if index < self.length/2:  # checking if index lies in first half of the DLL
+            print("Traversing from head")
+            for _ in range(index):
+                temp = temp.next
+        else: # if index lies in second of the DLL, then traverse through tail for more efficiency
+            print("Traversing from tail")
+            temp = self.tail
+            for _ in range(self.length-1,index,-1):
+                temp = temp.pre
 
+        print("Getting Node")
+        return temp.value
+        
 
     
     def print_all(self):
@@ -69,22 +113,29 @@ class DoublyLinkedList:
             print(pre.value)
             pre = pre.next
             
-        print('self.length : ',self.length)
+        print('self.length : ', self.length)
 
     
 
         
 
 
-doubly_linked_list = DoublyLinkedList(4)
-doubly_linked_list.append(8)
-doubly_linked_list.append(7)
-doubly_linked_list.append(9)
+doubly_linked_list = DoublyLinkedList(0)
 doubly_linked_list.append(1)
 doubly_linked_list.append(2)
-doubly_linked_list.print_all()
-doubly_linked_list.prepend(3)
-doubly_linked_list.print_all()
+doubly_linked_list.append(3)
+doubly_linked_list.append(4)
+doubly_linked_list.append(5)
+doubly_linked_list.append(6)
+doubly_linked_list.append(7)
+#doubly_linked_list.print_all()
+#doubly_linked_list.prepend(0)
+#doubly_linked_list.print_all()
+#print("Popped Node: ",doubly_linked_list.pop_first().value)
+#doubly_linked_list.print_all()
+print(doubly_linked_list.get(3))
+print(doubly_linked_list.get(4))
+#doubly_linked_list.print_all()
 
 # 2 items
 #print(doubly_linked_list.pop().value)  # printing removed node value
