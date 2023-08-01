@@ -4,7 +4,7 @@ class Node:
         self.value = value
         self.next = None
         self.pre = None
-        
+
 
 class DoublyLinkedList:
 
@@ -33,13 +33,13 @@ class DoublyLinkedList:
     def pop(self):
         if self.length ==0:
             return None
-        
+
         temp = self.tail
 
         if self.length==1:
             self.head = None
             self.tail = None
-        
+
         else:
             self.tail = self.tail.pre
             self.tail.next = None
@@ -48,12 +48,12 @@ class DoublyLinkedList:
         self.length -=1
         print("Node Removed from the End")
         return temp
-    
+
     # popping out first node from the doubly linked list
     def pop_first(self):
         if self.length ==0:
             return None
-        
+
         temp = self.head
         if self.length==1:
             self.head = None
@@ -63,15 +63,15 @@ class DoublyLinkedList:
             self.head.pre = None
             temp.next = None
 
-        self.length -=1  
-        print("Node Removed from the start")      
+        self.length -=1
+        print("Node Removed from the start")
         return temp
 
 
 
     # adding node at beginning of DLL
     def prepend(self,value):
-        
+
         new_node = Node(value)
         if self.length ==0:
             self.head = new_node
@@ -83,8 +83,8 @@ class DoublyLinkedList:
         self.length+=1
         print("Node added at the start")
         return True
-        
-    # getting value of node at particular index    
+
+    # getting value of node at particular index
     def get(self,index):
         if index < 0 or index >= self.length:
             return None
@@ -100,24 +100,70 @@ class DoublyLinkedList:
                 temp = temp.pre
 
         print("Getting Node")
-        return temp.value
-        
+        return temp
 
-    
+    # setting value of a prticular node at particular index
+    def set_value(self,index,value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+
+    # inserting node at a particular index
+    def insert(self,index,value):
+        if index<0 or index>self.length:
+            return False
+        if index==0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+
+        new_node = Node(value)
+        before = self.get(index-1)
+        after = before.next
+
+        new_node.pre = before
+        new_node.next = after
+        before.next = new_node
+        after.pre = new_node
+
+        self.length+=1
+        return True
+
+    # removing a node from a partiulcar index
+    def remove(self,index):
+        if index<0 or index>self.length:
+            return False
+        if index==0:
+            return self.pop_first()
+        if index == self.length-1:
+            return self.pop()
+
+        temp = self.get(index)
+        temp.next.pre = temp.pre
+        temp.pre.next = temp.next
+        temp.pre = None
+        temp.next = None
+        self.length-=1
+
+        return temp
+
+
     def print_all(self):
         if self.head is None:
             return None
-        
+
         pre = self.head
         while pre is not None:
             print(pre.value)
             pre = pre.next
-            
+
         print('self.length : ', self.length)
 
-    
 
-        
+
+
 
 
 doubly_linked_list = DoublyLinkedList(0)
@@ -127,14 +173,19 @@ doubly_linked_list.append(3)
 doubly_linked_list.append(4)
 doubly_linked_list.append(5)
 doubly_linked_list.append(6)
-doubly_linked_list.append(7)
+doubly_linked_list.print_all()
+doubly_linked_list.set_value(2,7)
+doubly_linked_list.print_all()
+doubly_linked_list.insert(3,9)
 #doubly_linked_list.print_all()
 #doubly_linked_list.prepend(0)
-#doubly_linked_list.print_all()
+doubly_linked_list.print_all()
+doubly_linked_list.remove(5)
+doubly_linked_list.print_all()
 #print("Popped Node: ",doubly_linked_list.pop_first().value)
 #doubly_linked_list.print_all()
-print(doubly_linked_list.get(3))
-print(doubly_linked_list.get(4))
+#print(doubly_linked_list.get(3))
+#print(doubly_linked_list.get(4))
 #doubly_linked_list.print_all()
 
 # 2 items

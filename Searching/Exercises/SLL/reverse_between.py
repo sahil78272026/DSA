@@ -79,12 +79,12 @@ class LinkedList:
         # dummy.next = None
         dummy.next = self.head #  passing head pointer to dummy.next pointer, so dummy is now part of current linked list
         pre = dummy 
-        print("pre.next1 : ",pre.next)
+    
 
         for _ in range(m):
-            print("pre.next2 : ",pre.next)
+           
             pre = pre.next
-            print("pre.next3 : ",pre.next)
+     
             print(pre)
         
         current = pre.next
