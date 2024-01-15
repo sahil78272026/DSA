@@ -8,7 +8,7 @@ print(detailed_result)
 
 #Domain Check with Email
 
-address = 'sahil.garg78272fsfsfsfsfsfsdffddfdddsdsd026@gmail.com'
+address = 'sahil.garg78272fsfsfsfsfsfsdffddfdddsdsd026@gail.m'
 bool_result_with_dns = is_email(address, check_dns=True)
 detailed_result_with_dns = is_email(address, check_dns=True, diagnose=True)
 print(bool_result_with_dns)
