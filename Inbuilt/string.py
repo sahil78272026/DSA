@@ -3,7 +3,7 @@
 # question: difference between isdecimal(), isdigit() and isnumeric()
 # question: difference between index() and find()
 
-s = 'python is Popular prOgramming language'
+s = 'python is Popular prOgramming is language pr'
 print('Original String : ', s)
 
 news = s.capitalize() # does not take any argument, capitalize first character and returns a new string
@@ -19,8 +19,8 @@ newsCenter = news.center(50, '*') # The center() method returns a new centered s
 # character will start padding from right then left one by one
 print('news.center(50, "*") :', newsCenter)
 
-num = news.count('p') # The count() method returns the number of occurrences of a substring in the given string.
-print('news.count("p") :',num)
+print('news.count("pr") :',news.count('pr')) #4 # The count() method returns the number of occurrences of a substring in the given string.
+
 
 newsEncode = news.encode() # converts the unicode string into utf-8
 """By default, the encode() method doesn't require any parameters.
@@ -63,16 +63,22 @@ else:
 
 
 
-
-
-
 # format() ?
 # format_map() ?
 
-newIndex = news.index('pro') # The index() method returns the index of a substring inside the string (if found). If the substring is not found, it raises an exception.
+#index
+newIndex = news.index('is') # The index() method returns the index of a substring inside the string (if found). If the substring is not found, it raises an exception.
 # If substring doesn't exist inside the string, it raises a ValueError exception.
 # The only difference is that find() method returns -1 if the substring is not found, whereas index() throws an exception.
-print('news.index("pro") :', newIndex)
+print('news.index("is") :', newIndex) # 7
+
+#rindex
+# If substring exists inside the string, it returns the highest index in the string where the substring is found.
+# If substring doesn't exist inside the string, it raises a ValueError exception.
+print('news.rindex("is") :',news.rindex("is")) # 30
+
+
+
 
 
 print('news.isalnum() : ',news.isalnum()) # The isalnum() method returns True if all characters in the string are alphanumeric (either alphabets or numbers). If not, it returns False.
@@ -111,7 +117,7 @@ str2 = '99'.join(text1)
 print(str1) # Python88is88a88fun88programming88language
 print(str2) # p99y99t99h99o99n
 
-
+# ljust, rjust
 # width - width of the given string. If width is less than or equal to the length of the string, the original string is returned.
 # fillchar (Optional) - character to fill the remaining space of the width
 text1 = 'python'
@@ -145,6 +151,11 @@ print(text.partition('not')) # ('python is fun', '', '')
 text = 'python is fun, isn''t it'
 print(text.partition('is')) # ('python ', 'is', ' fun, isnt it'), # splits at first occurence of 'is'
 
+#rpartition
+text = 'python is fun, isn''t it'
+print('text.rpartition("is")' , text.rpartition('is')) # ('python ', 'is', ' fun, isnt it'), # splits at last occurence of 'is'
+print('text.rpartition("not") :', text.rpartition('not')) # ('', '', 'python is fun, isnt it')
+
 
 # #replace
 # The replace() method can take a maximum of three arguments:
@@ -157,6 +168,7 @@ print(text.replace('fun','horror')) # python is horror, not horror, horror not h
 print(text.replace('fun','horror',1)) # python is horror, not horror, horror not horror
 
 
-#rfind
+#split
+
 
 
