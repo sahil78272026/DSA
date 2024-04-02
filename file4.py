@@ -30,7 +30,7 @@ print(hasattr(t1, 'name')) # True, checks if an object has the 'provided' variab
 print(hasattr(t1, 'age'))  # True, checks if an object has the 'provided' variable or not, returns boolean
 print(hasattr(t1,'mobile')) # False, checks if an object has the 'provided' variable or not, returns boolean
 print(hasattr(t1, "__dict__"))
-print(callable(t1))
+print(callable(t1)) # checks if __call__ method present in object and returns a boolean
 print(dir(t1))
 t1()
 print(dir(myfunc))
@@ -38,6 +38,6 @@ print(callable(myfunc))
 
 print(t1.__class__())
 print(t1.__class__)
-
+print(type(...))  # ellipses
 
 # By default, objects are not callable but functions are
