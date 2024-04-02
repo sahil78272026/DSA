@@ -1,55 +1,40 @@
-'''def outer_func(param):
+# Function based decorator1
 
-    def inner_func():
-        print(param)
-        return 1
+def decorator_function(original_function):
+    def wrapper_function():
+        original_function()
 
-    return inner_func
+    return wrapper_function
 
+def display():
+    print("display function ran")
 
-hi_func = outer_func('Hi')
-bye_func = outer_func('Bye')
-
-print(hi_func())
-bye_func()
-'''
-
-# # Function based decorator1
-
-# def decorator_function(original_function):
-#     def wrapper_function():
-#         original_function()
-
-#     return wrapper_function
-
-# def display():
-#     print("display function ran")
-
-# decorated_display = decorator_function(display) # passing display function, functions are first class object in python
+decorated_display = decorator_function(display) # passing display function, functions are first class object in python
+decorated_display()
 # decorated_display()
-# # decorated_display()
 
 
 # decorator2
-# def decorator_function(original_function):
-#     def wrapper_function(*args, **kwargs):
-#         print(args, kwargs)
-#         original_function(*args, **kwargs)
-#         return 10
+def decorator_function(original_function):
+    def wrapper_function(*args, **kwargs):
+        print(args, kwargs)
+        original_function(*args, **kwargs)
+        return 10
 
-#     return wrapper_function
+    return wrapper_function
 
-# # @decorator_function
-# def display(name, age):
-#     print(f"display function ran, {name}, {age}")
 
-# decorated_display = decorator_function(display)
-# return_value = decorated_display('Sahil', 31)
-# print(return_value)
+# @decorator_function
+def display(name, age):
+    print(f"display function ran, {name}, {age}")
 
-# # display('Sahil', 31)
+decorated_display = decorator_function(display)
+return_value = decorated_display('Sahil', 31)
+print(return_value)
 
-#*******************************
+# display('Sahil', 31)
+
+# *******************************
 
 # class Decorator
 class Decorator_class:
@@ -69,7 +54,7 @@ def display_info(name, age):
     print(f'display_info function with {name}, {age}')
 
 display = Decorator_class(display)
-display()  # object called as function call, invoking __call__ method in Decorator_class
+display()  # object called as function call, invoking __call__ method in Decorator_class, mentioning __call__ method in class, makes the object callable
 
 display_info('sahil',31)
 

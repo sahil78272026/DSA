@@ -18,4 +18,4 @@ print(x)
 
 property()
 
-function
+function()

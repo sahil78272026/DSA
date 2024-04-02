@@ -11,7 +11,7 @@ class Parent:
 
 class Child(Parent):
   def __init__(self, txt):
-    super().printmessage("hello")
+    super(Child, self).printmessage("hello") # Child is Subclass and self is the object of current class, same as super().printmessage("hello")
 
   
 
