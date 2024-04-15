@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Ecommerce Website</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="products">
+            <h2>Products</h2>
+            <div class="product">
+                <img src="resources.png" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>$100</p>
+                <button>Add to Cart</button>
+            </div>
+            <!-- Add more products here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Ecommerce Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetchProducts();
+            updateCartCount(getCartCountFromCookie());
+        });
+
+        function fetchProducts() {
+            // Fetch products as before
+        }
+
+        function updateCartCount(count) {
+            const cartCountElement = document.getElementById("cart-count");
+            cartCountElement.textContent = count;
+        }
+
+        function getCartCountFromCookie() {
+            const cartCookie = getCookie("cart");
+            if (cartCookie) {
+                const cart = JSON.parse(cartCookie);
+                return cart.length;
+            } else {
+                return 0;
+            }
+        }
+
+        function addToCart(product) {
+            let cart = [];
+            const cartCookie = getCookie("cart");
+            if (cartCookie) {
+                cart = JSON.parse(cartCookie);
+            }
+            cart.push(product);
+            setCookie("cart", JSON.stringify(cart), 30);
+            updateCartCount(cart.length);
+        }
+
+        function getCookie(name) {
+            const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+            return cookieValue ? cookieValue.pop() : null;
+        }
+
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+        }
+
+        document.addEventListener("click", function(event) {
+            if (event.target && event.target.tagName === "BUTTON" && event.target.textContent === "Add to Cart") {
+                const product = event.target.closest(".product").querySelector("h3").textContent;
+                addToCart(product);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -15,6 +15,7 @@ This promotes polymorphism, where objects of different classes can be used inter
 In this example, Shape is an abstract base class that defines two abstract methods: area() and perimeter(). 
 Concrete subclasses Rectangle and Circle inherit from Shape and provide implementations for these methods. 
 By defining a common interface using ABCs, we can treat instances of Rectangle and Circle interchangeably in the print_shape_info() function, promoting abstraction and polymorphism.
+
 '''
 
 import math

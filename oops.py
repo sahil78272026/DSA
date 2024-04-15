@@ -23,15 +23,26 @@ class Cat(Dog):
         print(self.age)
         print(self.address)
         self.self_check()
+        print(super().self_check())
         # print(dir(self))
+
+
+
 
 # d1 = Dog('sahil',32)
 # d2 = Dog('Himanshu', 25)
 cat = Cat("dinesh", 35, "Delhi")
+
+# when we inherit any class, all the attributes also gets inherited included dunder methods and variables
 print(cat.age)
 cat.cat_func()
 cat.self_check()
 print(type(cat))
+
+print(dir(cat))
+print(cat.__class__)
+
+
 # print(d1.name)
 # print(d1.species)
 # d1.species = "New Species"
@@ -45,18 +56,18 @@ print(type(cat))
 # print(Dog.species)
 
 
-class Animal:
-    class_att = 10
-    def name(self):
-        self.obj_att = 20
-        print("name function")
+# class Animal:
+#     class_att = 10
+#     def name(self):
+#         self.obj_att = 20
+#         print("name function")
 
-    def __call__(self):
-        print("call method")
+#     def __call__(self):
+#         print("call method")
 
-a = Animal()
-m = a.__getattribute__('name')
-m()
+# a = Animal()
+# m = a.__getattribute__('name')
+# m()
 
-print(a.__dict__)
-print(Animal.__dict__)
+# print(a.__dict__)
+# print(Animal.__dict__)

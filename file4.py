@@ -1,4 +1,7 @@
 class Test:
+
+    class_variable = 10
+
     def __init__(self):
         self.name = "sahil"
         self.age = 32
@@ -37,7 +40,7 @@ print(dir(myfunc))
 print(callable(myfunc))
 
 print(t1.__class__())
-print(t1.__class__)
+print(t1.__class__().__dict__)
 print(type(...))  # ellipses
 
 # By default, objects are not callable but functions are
