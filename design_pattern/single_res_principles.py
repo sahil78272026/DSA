@@ -1,3 +1,8 @@
+'''
+he first principle of SOLID is the Single Responsibility Principle (SRP). It states that a class should have only one reason to change, meaning it should have only one responsibility or job. Essentially, this principle promotes high cohesion within classes by ensuring that each class is focused on doing one thing well.
+'''
+
+
 # following the single responsibility
 # only doing user management
 class UserManager:
