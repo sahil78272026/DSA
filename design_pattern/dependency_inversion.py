@@ -16,7 +16,9 @@ class FrontEnd:
 class BackEnd:
     def get_data_from_database(self):
         return "Data from the database"
-    
+
+f = FrontEnd(BackEnd())    
+f.display_data()
 
 # With DIP.
 
